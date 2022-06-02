@@ -1,0 +1,27 @@
+require 'rake'
+require 'parallel'
+require 'cucumber/rake/task'
+
+Cucumber::Rake::Task.new("SmokeTest") do |task|
+  task.cucumber_opts = ['--format=pretty', '-t @smoketest']
+end
+
+task :default do |t, args|
+  case ENV['TESTRUN_TYPE']
+    when 'SmokeTest'
+      @num_browsers = 5
+    else
+      raise 'unknown TESTRUN_TYPE'
+  end
+
+  ENV['CONFIG_NAME'] = ENV['TESTRUN_TYPE']
+
+  Parallel.map([*1..@num_browsers], :in_processes => @num_browsers) do |task_id|
+    ENV["TASK_ID"] = (task_id - 1).to_s
+
+    puts "Running browser test #{task_id}"
+    Rake::Task[ENV['TESTRUN_TYPE']].invoke
+    Rake::Task[ENV['TESTRUN_TYPE']].reenable
+  end
+
+end

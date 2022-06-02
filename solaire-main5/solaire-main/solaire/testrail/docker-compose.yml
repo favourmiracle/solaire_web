@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  gootentests:
+    build:
+      context: .
+    environment:
+      - APP_HOST
+      - WEB_DRIVER=headless
+      - TESTRUN_ID
+      - SCOPE
+    volumes:
+      - '.:/cucumber'

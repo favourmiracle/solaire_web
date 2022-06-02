@@ -1,0 +1,32 @@
+browser_caps:
+  -
+    "browserName": "Chrome"
+    "browserVersion": "75.0"
+    "os": "OS X"
+    "os_version": "High Sierra"
+    "acceptSslCerts": true
+  -
+    "browserName": "firefox"
+    "browserVersion": "65.0"
+    "os": "Windows"
+    "os_version": "10"
+    "resolution": "1280x1024"
+    "acceptSslCerts": true
+  -
+    "browserName": "internet explorer"
+    "browserVersion": "11.0"
+    "os": "Windows"
+    "os_version": "7"
+    "resolution": "1280x1024"
+  -
+    "browserName": "safari"
+    "browserVersion": "12.1"
+    "os": "OS X"
+    "os_version": "Mojave"
+    "resolution": "1280x1024"
+  -
+    "browserName": "edge"
+    "browserVersion": "18.0"
+    "os": "Windows"
+    "os_version": "10"
+    "resolution": "1280x1024"
